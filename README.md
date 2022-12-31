@@ -27,22 +27,33 @@ First remember to load the package.
 library(flightplanner)
 ```
 
-To plan a mission (1) decide on an origin point latitude and longitude (e.g. 55.125505, 10.268467) This will be the lower left point of your image grid. Then decide on a horizontal (west-east) limit and a vertical (north-south) extent for your survey area. For example, from the origin to 200meters to the east, and 500meters to the north. Then decide on an altitude, say 60m (above the origin point). 
+To plan a mission, follow these steps:
 
-With this information you can make a plan:
+1. Decide on an origin point for your survey area, defined by its latitude and longitude coordinates (e.g. 55.125505, 10.268467). This will be the lower left point of your image grid.
+2. Determine the horizontal (west-east) and vertical (north-south) extent of your survey area, measured in meters from the origin point. For example, you might choose a horizontal limit of 100 meters to the east and a vertical extent of 200 meters to the north.
+3. Set the altitude of your survey area, measured in meters above the origin point. For example, you might choose an altitude of 60 meters.
+4. Once you have decided on these parameters, you can use them to generate an image grid using the provided code. This grid will help you plan your mission and ensure that you capture high-quality images of your desired survey area. 
+
+Like this:
 
 ```{r}
-litchiGrid(
+mission1 <- litchiGrid(
   55.125505,
   10.268467,
-  altitude = 200,
+  altitude = 60,
   overlap_width = 0.50,
   overlap_height = 0.50,
-  survey_xaxis = 30,
-  survey_yaxis = 50)
+  survey_xaxis = 100,
+  survey_yaxis = 200)
   
 ```
 
+This file can then be exported like this, ready to be uploaded to the Litchi Mission Hub.
+
+```
+write.csv(x = mission1, file = "missionFiles/mission1.csv",
+row.names = FALSE)
+```
 
 ## Note
 
