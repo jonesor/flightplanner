@@ -60,16 +60,10 @@ transformSf <- function(data) {
 
 #' Generate a mission plan for a drone in Litchi app
 #'
+#' @param photo_grid A photo grid data frame created using the photoGrid function.
 #' @param origin_lat The latitude of the starting point for the mission (in degrees).
 #' @param origin_long The longitude of the starting point for the mission (in degrees).
-#' @param altitude The altitude at which the photos will be taken (in meters).
-#' @param overlap_width The width-wise overlap between photos (as a fraction between 0 and 1).
-#' @param overlap_height The height-wise overlap between photos (as a fraction between 0 and 1).
-#' @param survey_xaxis The width of the survey area (in meters).
-#' @param survey_yaxis The height of the survey area (in meters).
 #' @param angleDeg The angle at which the survey grid is rotated from North (in degrees). e.g. a value of 45 rotates the photo grid around the origin point (bottom-left) by 45 degrees.
-#' @param fov numeric, optional. Field of view of the camera in degrees. Default is 94.
-#' @param aspectRatio numeric vector, optional. Aspect ratio of the image in the form of a 2-element vector, with the width as the first element and the height as the second element. Default is c(4,3).
 #' @param ... additional arguments to be passed to the function.
 #' @return A data frame containing the mission plan for the drone, in a format suitable for use with the Litchi app.
 #'
@@ -83,41 +77,45 @@ transformSf <- function(data) {
 #'
 #' @export
 #' @examples
-#' litchiMission <- litchiGrid(origin_lat = 55.124818,
-#' origin_long = 10.263445, altitude = 60, overlap_width = 0.4,
-#' overlap_height = 0.1, survey_xaxis = 200, survey_yaxis = 600, angleDeg = 45)
+#' photo_grid <- photoGrid(altitude = 60, overlap_width = 0.6,
+#' overlap_height = 0.2, survey_xaxis = 100, survey_yaxis = 200, plot = FALSE)
+#' litchiMission <- litchiGrid(photo_grid, pg, origin_lat = 55.125505,
+#' origin_long = 10.268467, angle = 38)
 #' \dontrun{
 #' write.csv(x = litchiMission, file = "missionFiles/testGrid10.csv",
 #' row.names = FALSE)
 #' }
 #'
-litchiGrid <- function(origin_lat, origin_long, altitude = 100,
-                       overlap_width = 0.75, overlap_height = 0.75, survey_xaxis = 200,
-                       survey_yaxis = 300, angleDeg = 0, fov = 94, aspectRatio = c(4, 3), ...) {
+litchiGrid <- function(photo_grid, origin_lat, origin_long, angleDeg = 0, ...) {
 
   # Validation of inputs
-  # Check that altitude is a positive number
-  if (altitude <= 0) {
-    stop("Altitude must be a positive number")
+  # photo_grid, should be a data frame containing columns for photoID, horiz, vert, and altitude
+  if (!inherits(photo_grid, "data.frame")) {
+    stop("photo_grid must be a data frame")
+  }
+  if (!is.numeric(photo_grid$horiz) || !is.numeric(photo_grid$vert)) {
+    stop("photoID, horiz, and vert must be numeric columns in photo_grid")
+  }
+  if (length(unique(photo_grid$photoID)) != nrow(photo_grid)) {
+    stop("photoID must be a unique identifier for each row in photo_grid")
+  }
+  if (min(photo_grid$altitude) <= 0) {
+    stop("altitude must contain a positive value in photo_grid")
+  }
+  if (any(photo_grid$horiz < 0) || any(photo_grid$vert < 0)) {
+    stop("horiz and vert cannot be negative in photo_grid")
   }
 
-  # Check that overlap width and overlap height are between 0 and 1
-  if (overlap_width < 0 || overlap_width > 1) {
-    stop("Overlap width must be between 0 and 1")
-  }
-  if (overlap_height < 0 || overlap_height > 1) {
-    stop("Overlap height must be between 0 and 1")
-  }
 
   # Check that angle is between 0 and 360 degrees
   if (angleDeg < 0 || angleDeg > 360) {
     stop("Angle must be between 0 and 360 degrees")
   }
 
-  # Set projection as coordinate reference system (CRS) WGS 84 (crs 4326)
+  # Set projection of origin point as coordinate reference system (CRS) WGS 84 (crs 4326)
   origin_sf <- convertToSf(data.frame(latitude = origin_lat, longitude = origin_long))
 
-  # Convert origin points to meter-based reference system
+  # Convert origin point to meter-based reference system
   origin1_sf_m <- transformSf(origin_sf)
 
   # Convert angle from degrees to radians
@@ -127,13 +125,9 @@ litchiGrid <- function(origin_lat, origin_long, altitude = 100,
   R <- computeRotationMatrix(angle_rad)
 
   # Create a photo grid, based on overlap, height and survey extent
-  photo_grid_points <- photoGrid(altitude = altitude,
-                                 overlap_width = overlap_width,
-                                 overlap_height = overlap_height,
-                                 survey_xaxis = survey_xaxis,
-                                 survey_yaxis = survey_yaxis,
-                                 fov = fov, aspectRatio = aspectRatio,
-                                 plot = FALSE) |> select(horiz, vert)
+  photo_grid_points <- photo_grid |> select(horiz, vert)
+
+  photo_grid_altitude <- photo_grid$altitude
 
   # Rotate each point in the data frame
   rotated_grid_points <- as.data.frame(t(apply(photo_grid_points, 1, function(p) R %*% as.matrix(p))))
@@ -162,7 +156,7 @@ litchiGrid <- function(origin_lat, origin_long, altitude = 100,
   # Litchi file creation
   litchiMission <- data.frame(
     lat = photo_grid_points_sf_latlong$lat, lng = photo_grid_points_sf_latlong$lng,
-    altitude = rep(altitude, nrow(photo_grid_points_sf_latlong)),
+    altitude = photo_grid_altitude,
     heading = angleDeg,
     curve = 0, rotationdir = 0, gimbalmode = 2, gimbalangle = -90,
     actiontype1 = 0, actionparam1 = 1500,

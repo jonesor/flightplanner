@@ -9,7 +9,7 @@
 #' @param fov numeric, optional. Field of view of the camera in degrees. Default is 94.
 #' @param aspectRatio numeric vector, optional. Aspect ratio of the image in the form of a 2-element vector, with the width as the first element and the height as the second element. Default is c(4,3).
 #' @param ... additional arguments to be passed to the function.
-#' @return If `plot` is TRUE, returns a ggplot object visualizing the photo grid. If `plot` is FALSE, returns a data frame of points representing the centers of each photo.
+#' @return If `plot` is TRUE, returns a ggplot object visualizing the photo grid. If `plot` is FALSE, returns a data frame of consisting of photoID and points representing the centers of each photo, and altitude.
 #'
 #' @importFrom dplyr mutate
 #' @importFrom dplyr select
@@ -74,10 +74,12 @@ photoGrid <- function(altitude = 40,
 
   # Expand the grid to create a matrix of points
   # Add the min/max edges for photo footprints
-  photo_grid <- tidyr::expand_grid(horiz, vert) |>
-    dplyr::mutate(xmin = horiz - (photo_footprint_width / 2), xmax = horiz + (photo_footprint_width / 2)) |>
-    dplyr::mutate(ymin = vert - (photo_footprint_height / 2), ymax = vert + (photo_footprint_height / 2)) |>
-    dplyr::mutate(photoID = as.factor(1:dplyr::n()))
+  photo_grid <- expand_grid(horiz, vert) |>
+    mutate(xmin = horiz - (photo_footprint_width / 2), xmax = horiz + (photo_footprint_width / 2)) |>
+    mutate(ymin = vert - (photo_footprint_height / 2), ymax = vert + (photo_footprint_height / 2)) |>
+    mutate(photoID = as.factor(1:dplyr::n())) |>
+    mutate(altitude = altitude)
+
 
   # If plot is set to TRUE, create a visual representation of the grid with ggplot
   if (plot == TRUE) {
@@ -92,7 +94,8 @@ photoGrid <- function(altitude = 40,
     return(p)
   }
   # If plot is set to FALSE, return the data frame of points
-  if (plot != TRUE) {
-    return(photo_grid)
+  if (plot == FALSE) {
+    return(photo_grid |>
+             select(photoID, horiz, vert, altitude))
   }
 }

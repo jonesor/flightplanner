@@ -4,40 +4,16 @@
 \alias{litchiGrid}
 \title{Generate a mission plan for a drone in Litchi app}
 \usage{
-litchiGrid(
-  origin_lat,
-  origin_long,
-  altitude = 100,
-  overlap_width = 0.75,
-  overlap_height = 0.75,
-  survey_xaxis = 200,
-  survey_yaxis = 300,
-  angleDeg = 0,
-  fov = 94,
-  aspectRatio = c(4, 3),
-  ...
-)
+litchiGrid(photo_grid, origin_lat, origin_long, angleDeg = 0, ...)
 }
 \arguments{
+\item{photo_grid}{A photo grid data frame created using the photoGrid function.}
+
 \item{origin_lat}{The latitude of the starting point for the mission (in degrees).}
 
 \item{origin_long}{The longitude of the starting point for the mission (in degrees).}
 
-\item{altitude}{The altitude at which the photos will be taken (in meters).}
-
-\item{overlap_width}{The width-wise overlap between photos (as a fraction between 0 and 1).}
-
-\item{overlap_height}{The height-wise overlap between photos (as a fraction between 0 and 1).}
-
-\item{survey_xaxis}{The width of the survey area (in meters).}
-
-\item{survey_yaxis}{The height of the survey area (in meters).}
-
 \item{angleDeg}{The angle at which the survey grid is rotated from North (in degrees). e.g. a value of 45 rotates the photo grid around the origin point (bottom-left) by 45 degrees.}
-
-\item{fov}{numeric, optional. Field of view of the camera in degrees. Default is 94.}
-
-\item{aspectRatio}{numeric vector, optional. Aspect ratio of the image in the form of a 2-element vector, with the width as the first element and the height as the second element. Default is c(4,3).}
 
 \item{...}{additional arguments to be passed to the function.}
 }
@@ -48,9 +24,10 @@ A data frame containing the mission plan for the drone, in a format suitable for
 Generate a mission plan for a drone in Litchi app
 }
 \examples{
-litchiMission <- litchiGrid(origin_lat = 55.124818,
-origin_long = 10.263445, altitude = 60, overlap_width = 0.4,
-overlap_height = 0.1, survey_xaxis = 200, survey_yaxis = 600, angleDeg = 45)
+photo_grid <- photoGrid(altitude = 60, overlap_width = 0.6,
+overlap_height = 0.2, survey_xaxis = 100, survey_yaxis = 200, plot = FALSE)
+litchiMission <- litchiGrid(photo_grid, pg, origin_lat = 55.125505,
+origin_long = 10.268467, angle = 38)
 \dontrun{
 write.csv(x = litchiMission, file = "missionFiles/testGrid10.csv",
 row.names = FALSE)
