@@ -24,7 +24,7 @@ To plan a mission, follow these steps:
 
 1. Determine the horizontal and vertical extent of your survey area, measured in meters from the origin point. For example, you might choose a horizontal limit of 100 meters to the east and a vertical extent of 200 meters to the north. 
 2. Set the altitude of your survey area, measured in meters above the origin point. For example, you might choose an altitude of 60 meters.
-3. Run the `photoGrid` function with the `horiz`, `vert`, and `altitude` arguments from steps 1 and 2. Set the `plot` argument set to `TRUE` to visualize your photo survey grid in a plot. Modify the function's settings (e.g. including desired overlap in vertical and horizonta directions) until you are satisfied with the layout of the grid.
+3. Run the `fp_photo_grid` function with the `horiz`, `vert`, and `altitude` arguments from steps 1 and 2. Set the `plot` argument set to `TRUE` to visualize your photo survey grid in a plot. Modify the function's settings (e.g. including desired overlap in vertical and horizonta directions) until you are satisfied with the layout of the grid.
 4. Decide on an origin point for your survey area, defined by its latitude and longitude coordinates (e.g. 55.125505, 10.268467). This will be the lower left point of your image grid.
 5. Decide on an angle by which the survey grid needs to be pivoted/rotated around this origin point (e.g. 45 degrees).
 6. Use the `litchiGrid` function to generate a flight mission plan for use with the Litchi Mission Hub app. This mission plan is a `data.frame` which you save as a CSV file for use in the Litchi Mission Hub app.
@@ -37,14 +37,14 @@ Here's a worked example.
 First make a photo grid:
 
 ```{r}
-photoGrid(altitude = 60, overlap_width = 0.6,
+fp_photo_grid(altitude = 60, overlap_width = 0.6,
 overlap_height = 0.4, survey_xaxis = 140, survey_yaxis = 300, plot = TRUE)
 ```
 
 Then, when satisfied with this, run it again with `plot = FALSE` to get the photo grid.
 
 ```{r}
-pg <- photoGrid(altitude = 60, overlap_width = 0.6,
+pg <- fp_photo_grid(altitude = 60, overlap_width = 0.6,
 overlap_height = 0.4, survey_xaxis = 140, survey_yaxis = 300, plot = FALSE)
 ```
 

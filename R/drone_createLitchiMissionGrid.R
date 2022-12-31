@@ -1,19 +1,3 @@
-# Function for grid creation.
-#
-# litchiGrid is a function that creates a grid in Litchi format with points
-# arranged in columns and rows. The user must select an origin point, and a
-# length on the horizontal (west-east) and vertical (north-south) axis. They
-# also must set the amount of overlap required and flight altitude of the drone.
-# The angleDeg defines a rotation whereby the set of points is rotated around
-# the origin.
-
-# The script imageFootprintCalculations.R contains the necessarry functions. The
-# angle of the FieldOfView (fov), and aspect ratio is assumed as for a DJI
-# Phantom 4 Pro (fov = 94, imageHeight = 3, imageWidth = 4) I could alter this
-# in a dropdown menu, if converted to a shiny app. e.g. I could pick a drone
-# from the dropdown, and these values could be assigned automratically.
-
-
 #' Compute a rotation matrix for a given angle
 #'
 #' @param angle_rad The angle in radians for which to compute the rotation matrix.
@@ -60,7 +44,7 @@ transformSf <- function(data) {
 
 #' Generate a mission plan for a drone in Litchi app
 #'
-#' @param photo_grid A photo grid data frame created using the photoGrid function.
+#' @param photo_grid A photo grid data frame created using the `fp_photo_grid` function.
 #' @param origin_lat The latitude of the starting point for the mission (in degrees).
 #' @param origin_long The longitude of the starting point for the mission (in degrees).
 #' @param angleDeg The angle at which the survey grid is rotated from North (in degrees). e.g. a value of 45 rotates the photo grid around the origin point (bottom-left) by 45 degrees.
@@ -77,16 +61,17 @@ transformSf <- function(data) {
 #'
 #' @export
 #' @examples
-#' photo_grid <- photoGrid(altitude = 60, overlap_width = 0.6,
+#' photo_grid <- fp_photo_grid(altitude = 60, overlap_width = 0.6,
 #' overlap_height = 0.2, survey_xaxis = 100, survey_yaxis = 200, plot = FALSE)
-#' litchiMission <- litchiGrid(photo_grid, pg, origin_lat = 55.125505,
+#'
+#' litchiMission <- fp_litchi_mission(photo_grid, pg, origin_lat = 55.125505,
 #' origin_long = 10.268467, angle = 38)
 #' \dontrun{
 #' write.csv(x = litchiMission, file = "missionFiles/testGrid10.csv",
 #' row.names = FALSE)
 #' }
 #'
-litchiGrid <- function(photo_grid, origin_lat, origin_long, angleDeg = 0, ...) {
+fp_litchi_mission <- function(photo_grid, origin_lat, origin_long, angleDeg = 0, ...) {
 
   # Validation of inputs
   # photo_grid, should be a data frame containing columns for photoID, horiz, vert, and altitude
@@ -136,7 +121,7 @@ litchiGrid <- function(photo_grid, origin_lat, origin_long, angleDeg = 0, ...) {
   photo_grid_points$x_rot <- rotated_grid_points$x
   photo_grid_points$y_rot <- rotated_grid_points$y
 
-  # Place the photogrid onto on lat long
+  # Place the photo grid onto on lat long
   photo_grid_points <- photo_grid_points |>
     select(x_rot, y_rot) |>
     mutate(long = x_rot + st_coordinates(origin1_sf_m)[, "X"]) |>

@@ -46,7 +46,7 @@ To plan a mission, follow these steps:
 2.  Set the altitude of your survey area, measured in meters above the
     origin point. For example, you might choose an altitude of 60
     meters.
-3.  Run the `photoGrid` function with the `horiz`, `vert`, and
+3.  Run the `fp_photo_grid` function with the `horiz`, `vert`, and
     `altitude` arguments from steps 1 and 2. Set the `plot` argument set
     to `TRUE` to visualize your photo survey grid in a plot. Modify the
     function’s settings (e.g. including desired overlap in vertical and
@@ -57,8 +57,8 @@ To plan a mission, follow these steps:
     will be the lower left point of your image grid.
 5.  Decide on an angle by which the survey grid needs to be
     pivoted/rotated around this origin point (e.g. 45 degrees).
-6.  Use the `litchiGrid` function to generate a flight mission plan for
-    use with the Litchi Mission Hub app. This mission plan is a
+6.  Use the `fp_litchi_mission` function to generate a flight mission
+    plan for use with the Litchi Mission Hub app. This mission plan is a
     `data.frame` which you save as a CSV file for use in the Litchi
     Mission Hub app.
 7.  Check your plan on the Litchi MissionHub and adjust as necessary.
@@ -72,7 +72,7 @@ Here’s a worked example.
 First make a photo grid:
 
 ``` r
-photoGrid(altitude = 60, overlap_width = 0.6,
+fp_photo_grid(altitude = 60, overlap_width = 0.6,
 overlap_height = 0.4, survey_xaxis = 140, survey_yaxis = 300, plot = TRUE)
 ```
 
@@ -82,14 +82,14 @@ Then, when satisfied with this, run it again with `plot = FALSE` to get
 the photo grid.
 
 ``` r
-pg <- photoGrid(altitude = 60, overlap_width = 0.6,
+pg <- fp_photo_grid(altitude = 60, overlap_width = 0.6,
 overlap_height = 0.4, survey_xaxis = 140, survey_yaxis = 300, plot = FALSE)
 ```
 
 Next, produce the litchi plan:
 
 ``` r
-mission1 <- litchiGrid(pg, origin_lat = 55.125505, origin_long = 10.268467, angle = 38)
+mission1 <- fp_litchi_mission(pg, origin_lat = 55.125505, origin_long = 10.268467, angle = 38)
 head(mission1)
 #>        lat      lng altitude heading curve rotationdir gimbalmode gimbalangle
 #> 1 55.12511 10.26934       60      38     0           0          2         -90

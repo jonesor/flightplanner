@@ -1,9 +1,9 @@
 
 globalVariables(unique(c(
-  # litchiGrid:
+  # fp_litchi_mission:
   "horiz", "lat", "lng", "rowNumber", "vert", "x_rot", "y_rot",
   "altitude", "origin_lat", "origin_long", "overlap_height", "overlap_width",
 
-  # photoGrid:
+  # fp_photo_grid:
   "photoID", "xmax", "xmin", "ymax", "ymin"
 )))

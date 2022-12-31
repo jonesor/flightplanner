@@ -19,11 +19,11 @@
 #'
 #' @export
 #' @examples
-#' photoGrid()
-#' photoGrid(altitude = 60, overlap_width = 0.6,
+#' fp_photo_grid()
+#' fp_photo_grid(altitude = 60, overlap_width = 0.6,
 #' overlap_height = 0.2, survey_xaxis = 400, survey_yaxis = 500, plot = TRUE)
 #'
-photoGrid <- function(altitude = 40,
+fp_photo_grid <- function(altitude = 40,
                       overlap_width = 0.4,
                       overlap_height = 0.1,
                       survey_xaxis = 200,
