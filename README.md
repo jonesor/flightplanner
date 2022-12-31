@@ -6,17 +6,19 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-`flightplanner` allows users to create flight plans for the Litchi
-software using input data such as latitude and longitude of an origin
-point, dimensions and orientation of a survey array, done camera field
-of view and desired altitude. It calculates the image footprint using
-this information and calculates the best position of photo survey
-points. It also provides the ability to visualize the resulting flight
-plan and survey photo grid.
+`flightplanner` is a tool for creating flight plans for use with the
+Litchi software. It allows users to specify the latitude and longitude
+of an origin point, as well as the dimensions, orientation, and altitude
+of a survey area. The tool then calculates the best positions for
+capturing photos of the survey area using a drone-mounted camera with a
+vertical orientation. The resulting flight plan is designed to create an
+orthomosaic from a series of overlapping images taken in a grid pattern.
+`flightplanner` also provides visualization features for previewing the
+flight plan and survey photo grid.
 
 ## Installation
 
-You can install the development version of flightplanner like this:
+You can install the development version of `flightplanner` like this:
 
 ``` r
 # install package 'remotes' if necessary
