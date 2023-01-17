@@ -9,7 +9,7 @@
 #' @param fov numeric, optional. Field of view of the camera in degrees. Default is 94.
 #' @param aspectRatio numeric vector, optional. Aspect ratio of the image in the form of a 2-element vector, with the width as the first element and the height as the second element. Default is c(4,3).
 #' @param ... additional arguments to be passed to the function.
-#' @return If `plot` is TRUE, returns a ggplot object visualizing the photo grid. If `plot` is FALSE, returns a data frame of consisting of photoID and points representing the centers of each photo, and altitude.
+#' @return If `plot` is TRUE, returns a `ggplot` object visualizing the photo grid. If `plot` is FALSE, returns a data frame of consisting of photoID and points representing the centers of each photo, and altitude.
 #'
 #' @importFrom dplyr mutate
 #' @importFrom dplyr select
