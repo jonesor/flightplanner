@@ -10,7 +10,7 @@ transformSf(data)
 \item{data}{An sf object.}
 }
 \value{
-The input sf object transformed to a meter-based CRS.
+The input sf object transformed to a meter-based coordinate reference system (CRS).
 }
 \description{
 Transform an sf object to a meter-based CRS
