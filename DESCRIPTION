@@ -4,16 +4,27 @@ Version: 0.0.0.9000
 Authors@R: 
     person("Owen", "Jones", , "jones@biology.sdu.dk", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-5720-4686"))
-Description: Allows users to create flight plans for the Litchi software using input data such as latitude and longitude of an origin point, dimensions and orientation of a survey array, done camera field of view and desired altitude. It calculates the image footprint using this information and calculates the best position of photo survey points. It also provides the ability to visualize the resulting flight plan and survey photo grid.
+Description: Allows users to create flight plans for the Litchi software
+    using input data such as latitude and longitude of an origin point,
+    dimensions and orientation of a survey array, done camera field of
+    view and desired altitude. It calculates the image footprint using
+    this information and calculates the best position of photo survey
+    points. It also provides the ability to visualize the resulting flight
+    plan and survey photo grid.
 License: CC BY-SA 4.0
-Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-VignetteBuilder: knitr
-RoxygenNote: 7.1.2
 Imports: 
     dplyr,
     ggplot2,
     sf,
     tidyr
 Suggests:
+    knitr,
+    rmarkdown
+VignetteBuilder: 
     knitr
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+URL: https://github.com/jonesor/flightplanner
+BugReports: https://github.com/jonesor/flightplanner/issues
+
