@@ -36,7 +36,7 @@ fp_photo_grid(
 \item{...}{additional arguments to be passed to the function.}
 }
 \value{
-If \code{plot} is TRUE, returns a ggplot object visualizing the photo grid. If \code{plot} is FALSE, returns a data frame of consisting of photoID and points representing the centers of each photo, and altitude.
+If \code{plot} is TRUE, returns a \code{ggplot} object visualizing the photo grid. If \code{plot} is FALSE, returns a data frame of consisting of photoID and points representing the centers of each photo, and altitude.
 }
 \description{
 Create a grid of points representing the centers of photos
