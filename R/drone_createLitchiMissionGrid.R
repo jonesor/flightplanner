@@ -9,7 +9,7 @@ computeRotationMatrix <- function(angle_rad) {
   matrix(c(cos(angle_rad), -sin(angle_rad), sin(angle_rad), cos(angle_rad)), nrow = 2)
 }
 
-#' Convert a data frame to an sf object with WGS 84 CRS
+#' Convert a data frame to an sf object with WGS 84 coordinate reference system (CRS)
 #'
 #' @param data A data frame containing latitude and longitude columns.
 #' @return An sf object with WGS 84 CRS.
@@ -28,7 +28,7 @@ convertToSf <- function(data) {
 #' Transform an sf object to a meter-based CRS
 #'
 #' @param data An sf object.
-#' @return The input sf object transformed to a meter-based CRS.
+#' @return The input sf object transformed to a meter-based coordinate reference system (CRS).
 #' @keywords internal
 #'
 #' @importFrom sf st_transform
