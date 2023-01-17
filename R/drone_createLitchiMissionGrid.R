@@ -61,14 +61,20 @@ transformSf <- function(data) {
 #'
 #' @export
 #' @examples
-#' photo_grid <- fp_photo_grid(altitude = 60, overlap_width = 0.6,
-#' overlap_height = 0.2, survey_xaxis = 100, survey_yaxis = 200, plot = FALSE)
+#' photo_grid <- fp_photo_grid(
+#'   altitude = 60, overlap_width = 0.6,
+#'   overlap_height = 0.2, survey_xaxis = 100, survey_yaxis = 200, plot = FALSE
+#' )
 #'
-#' litchiMission <- fp_litchi_mission(photo_grid, pg, origin_lat = 55.125505,
-#' origin_long = 10.268467, angle = 38)
+#' litchiMission <- fp_litchi_mission(photo_grid, pg,
+#'   origin_lat = 55.125505,
+#'   origin_long = 10.268467, angle = 38
+#' )
 #' \dontrun{
-#' write.csv(x = litchiMission, file = "missionFiles/testGrid10.csv",
-#' row.names = FALSE)
+#' write.csv(
+#'   x = litchiMission, file = "missionFiles/testGrid10.csv",
+#'   row.names = FALSE
+#' )
 #' }
 #'
 fp_litchi_mission <- function(photo_grid, origin_lat, origin_long, angleDeg = 0, ...) {

@@ -101,4 +101,3 @@ footprint_Width <- function(altitude, fov = 94, aspectRatio = c(4, 3), ...) {
   d <- 2 * tan(fov_radians / 2) * altitude
   return(d / sqrt(aspectRatio_fraction^2 + 1))
 }
-

@@ -1,5 +1,5 @@
 ---
-title: "makeplan"
+title: "Make a Litchi Mission Plan"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{makeplan}

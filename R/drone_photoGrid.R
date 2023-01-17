@@ -20,18 +20,20 @@
 #' @export
 #' @examples
 #' fp_photo_grid()
-#' fp_photo_grid(altitude = 60, overlap_width = 0.6,
-#' overlap_height = 0.2, survey_xaxis = 400, survey_yaxis = 500, plot = TRUE)
+#' fp_photo_grid(
+#'   altitude = 60, overlap_width = 0.6,
+#'   overlap_height = 0.2, survey_xaxis = 400, survey_yaxis = 500, plot = TRUE
+#' )
 #'
 fp_photo_grid <- function(altitude = 40,
-                      overlap_width = 0.4,
-                      overlap_height = 0.1,
-                      survey_xaxis = 200,
-                      survey_yaxis = 300,
-                      plot = TRUE,
-                      fov = 94,
-                      aspectRatio = c(4, 3),
-                      ...) {
+                          overlap_width = 0.4,
+                          overlap_height = 0.1,
+                          survey_xaxis = 200,
+                          survey_yaxis = 300,
+                          plot = TRUE,
+                          fov = 94,
+                          aspectRatio = c(4, 3),
+                          ...) {
 
   # Validate inputs
   # Check that altitude is a positive number
@@ -96,6 +98,6 @@ fp_photo_grid <- function(altitude = 40,
   # If plot is set to FALSE, return the data frame of points
   if (plot == FALSE) {
     return(photo_grid |>
-             select(photoID, horiz, vert, altitude))
+      select(photoID, horiz, vert, altitude))
   }
 }
