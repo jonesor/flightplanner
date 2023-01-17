@@ -50,8 +50,8 @@ To plan a mission, follow these steps:
     `altitude` arguments from steps 1 and 2. Set the `plot` argument set
     to `TRUE` to visualize your photo survey grid in a plot. Modify the
     function’s settings (e.g. including desired overlap in vertical and
-    horizonta directions) until you are satisfied with the layout of the
-    grid.
+    horizontal directions) until you are satisfied with the layout of
+    the grid.
 4.  Decide on an origin point for your survey area, defined by its
     latitude and longitude coordinates (e.g. 55.125505, 10.268467). This
     will be the lower left point of your image grid.
