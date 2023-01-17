@@ -4,6 +4,8 @@
   "identifier": "flightplanner",
   "description": "Allows users to create flight plans for the Litchi software using input data such as latitude and longitude of an origin point, dimensions and orientation of a survey array, done camera field of view and desired altitude. It calculates the image footprint using this information and calculates the best position of photo survey points. It also provides the ability to visualize the resulting flight plan and survey photo grid.",
   "name": "flightplanner: Create Drone Flight Plans For Litchi",
+  "codeRepository": "https://github.com/jonesor/flightplanner",
+  "issueTracker": "https://github.com/jonesor/flightplanner/issues",
   "license": "https://spdx.org/licenses/CC-BY-SA-4.0",
   "version": "0.0.0.9000",
   "programmingLanguage": {
@@ -107,8 +109,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "30.618KB",
-  "codeRepository": "https://github.com/jonesor/flightplanner",
+  "fileSize": "30.725KB",
   "releaseNotes": "https://github.com/jonesor/flightplanner/blob/master/NEWS.md",
   "readme": "https://github.com/jonesor/flightplanner/blob/main/README.md"
 }
