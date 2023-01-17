@@ -43,7 +43,9 @@ Create a grid of points representing the centers of photos
 }
 \examples{
 fp_photo_grid()
-fp_photo_grid(altitude = 60, overlap_width = 0.6,
-overlap_height = 0.2, survey_xaxis = 400, survey_yaxis = 500, plot = TRUE)
+fp_photo_grid(
+  altitude = 60, overlap_width = 0.6,
+  overlap_height = 0.2, survey_xaxis = 400, survey_yaxis = 500, plot = TRUE
+)
 
 }
