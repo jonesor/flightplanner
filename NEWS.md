@@ -1,3 +1,3 @@
-# flightplanner 0.0.0.9000
+# flightplanner 0.1.0
 
-* The dev version. It works.
+* The first version. It works.
