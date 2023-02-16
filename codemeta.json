@@ -3,11 +3,11 @@
   "@type": "SoftwareSourceCode",
   "identifier": "flightplanner",
   "description": "Allows users to create flight plans for the Litchi software using input data such as latitude and longitude of an origin point, dimensions and orientation of a survey array, done camera field of view and desired altitude. It calculates the image footprint using this information and calculates the best position of photo survey points. It also provides the ability to visualize the resulting flight plan and survey photo grid.",
-  "name": "flightplanner: Create Drone Flight Plans For Litchi",
+  "name": "flightplanner: Create Drone Flight Plans for Litchi",
   "codeRepository": "https://github.com/jonesor/flightplanner",
   "issueTracker": "https://github.com/jonesor/flightplanner/issues",
   "license": "https://spdx.org/licenses/CC-BY-SA-4.0",
-  "version": "0.0.0.9000",
+  "version": "0.1.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -30,32 +30,6 @@
       "familyName": "Jones",
       "email": "jones@biology.sdu.dk",
       "@id": "https://orcid.org/0000-0001-5720-4686"
-    }
-  ],
-  "softwareSuggestions": [
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "knitr",
-      "name": "knitr",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=knitr"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "rmarkdown",
-      "name": "rmarkdown",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
     }
   ],
   "softwareRequirements": {
@@ -109,7 +83,6 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "30.725KB",
-  "releaseNotes": "https://github.com/jonesor/flightplanner/blob/master/NEWS.md",
-  "readme": "https://github.com/jonesor/flightplanner/blob/main/README.md"
+  "fileSize": "58.375KB",
+  "releaseNotes": "https://github.com/jonesor/flightplanner/blob/master/NEWS.md"
 }

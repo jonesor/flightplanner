@@ -16,6 +16,8 @@ knitr::opts_chunk$set(
 # flightplanner
 
 <!-- badges: start -->
+[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+
 <!-- badges: end -->
 
 `flightplanner` is a tool for creating flight plans for use with the Litchi software. It allows users to specify the latitude and longitude of an origin point, as well as the dimensions, orientation, and altitude of a survey area. The tool then calculates the best positions for capturing photos of the survey area using a drone-mounted camera with a vertical orientation. The resulting flight plan is designed to create an orthomosaic from a series of overlapping images taken in a grid pattern. `flightplanner` also provides visualization features for previewing the flight plan and survey photo grid.
