@@ -1,3 +1,3 @@
 # flightplanner 0.0.0.9000
 
-* The first release.
+* The dev version. It works.

@@ -24,9 +24,6 @@ You can install the development version of `flightplanner` like this:
 # install package 'remotes' if necessary
 # will already be installed if 'devtools' is installed
 install.packages("remotes")
-
-# argument 'build_opts = NULL' only needed if you want to build vignettes
-remotes::install_github("jonesor/flightplanner", build_opts = NULL)
 ```
 
 ## Usage
@@ -76,7 +73,7 @@ fp_photo_grid(altitude = 60, overlap_width = 0.6,
 overlap_height = 0.4, survey_xaxis = 140, survey_yaxis = 300, plot = TRUE)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+![](man/figures/README-photoGrid-1.png)<!-- -->
 
 Then, when satisfied with this, run it again with `plot = FALSE` to get
 the photo grid.

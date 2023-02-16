@@ -5,3 +5,7 @@
 ^CODE_OF_CONDUCT\.md$
 README_files
 ^codemeta\.json$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^README\.Rmd$

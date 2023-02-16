@@ -4,11 +4,12 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r, echo = FALSE}
+```{r, knitrOptions, echo = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  eval = TRUE
+  eval = TRUE,
+  fig.path = "man/figures/README-"
 )
 ```
 
@@ -23,20 +24,17 @@ knitr::opts_chunk$set(
 
 You can install the development version of `flightplanner` like this:
 
-```{r, eval = FALSE}
+```{r, installPackage, eval = FALSE}
 # install package 'remotes' if necessary
 # will already be installed if 'devtools' is installed
 install.packages("remotes")
-
-# argument 'build_opts = NULL' only needed if you want to build vignettes
-remotes::install_github("jonesor/flightplanner", build_opts = NULL)
 ```
 
 ## Usage
 
 First remember to load the package.
 
-```{r}
+```{r, loadPackage}
 library(flightplanner)
 ```
 
@@ -56,21 +54,21 @@ Here's a worked example.
 
 First make a photo grid:
 
-```{r}
+```{r, photoGrid}
 fp_photo_grid(altitude = 60, overlap_width = 0.6,
 overlap_height = 0.4, survey_xaxis = 140, survey_yaxis = 300, plot = TRUE)
 ```
 
 Then, when satisfied with this, run it again with `plot = FALSE` to get the photo grid.
 
-```{r}
+```{r, photoGridNoPlot}
 pg <- fp_photo_grid(altitude = 60, overlap_width = 0.6,
 overlap_height = 0.4, survey_xaxis = 140, survey_yaxis = 300, plot = FALSE)
 ```
 
 Next, produce the litchi plan:
 
-```{r}
+```{r, missionPlan}
 mission1 <- fp_litchi_mission(pg, origin_lat = 55.125505, origin_long = 10.268467, angle = 38)
 head(mission1)
 ```
