@@ -63,7 +63,8 @@ To plan a mission, follow these steps:
     plan for use with the Litchi Mission Hub app. This mission plan is a
     `data.frame` which you save as a CSV file for use in the Litchi
     Mission Hub app.
-7.  Check your plan on the Litchi MissionHub and adjust as necessary.
+7.  Check your plan on the Litchi MissionHub
+    (<https://flylitchi.com/hub>) and adjust as necessary.
 
 Be aware that the plan assumes that the topology is flat, that there are
 no trees or other structures. Therefore, pay particular attention to the
@@ -88,7 +89,7 @@ pg <- fp_photo_grid(altitude = 60, overlap_width = 0.6,
 overlap_height = 0.4, survey_xaxis = 140, survey_yaxis = 300, plot = FALSE)
 ```
 
-Next, produce the litchi plan:
+Next, produce the Litchi plan:
 
 ``` r
 mission1 <- fp_litchi_mission(pg, origin_lat = 55.125505, origin_long = 10.268467, angle = 38)

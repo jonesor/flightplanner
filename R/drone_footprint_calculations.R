@@ -11,23 +11,21 @@
 #' @return A single numeric value representing the calculated aspect of the camera footprint.
 #'
 #' @examples
-#' \dontrun{
 #' # Calculate the width of the camera footprint at an altitude of 100 meters
-#' footprint_Width(altitude = 100)
+#' footprint_width(altitude = 100)
 #'
 #' # Calculate the height of the camera footprint at an altitude of 50 meters
 #' # and a field of view of 120 degrees
-#' footprint_Height(altitude = 50, fov = 120)
+#' footprint_height(altitude = 50, fov = 120)
 #'
 #' # Calculate the diagonal length of the camera footprint at an altitude of
 #' # 200 meters, a field of view of 90 degrees, and an image aspect ratio of
 #' # 4:3
-#' footprint_Diagonal(altitude = 200, fov = 90, aspectRatio = c(4, 3))
-#' }
+#' footprint_diagonal(altitude = 200, fov = 90, aspectRatio = c(4, 3))
 #' @export
 
 #' @rdname footprint_
-footprint_Diagonal <- function(altitude, fov = 94, aspectRatio = c(4, 3), ...) {
+footprint_diagonal <- function(altitude, fov = 94, aspectRatio = c(4, 3), ...) {
   imageWidth <- aspectRatio[1]
   imageHeight <- aspectRatio[2]
 
@@ -51,7 +49,7 @@ footprint_Diagonal <- function(altitude, fov = 94, aspectRatio = c(4, 3), ...) {
 }
 
 #' @rdname footprint_
-footprint_Height <- function(altitude, fov = 94, aspectRatio = c(4, 3), ...) {
+footprint_height <- function(altitude, fov = 94, aspectRatio = c(4, 3), ...) {
   imageWidth <- aspectRatio[1]
   imageHeight <- aspectRatio[2]
 
@@ -77,7 +75,7 @@ footprint_Height <- function(altitude, fov = 94, aspectRatio = c(4, 3), ...) {
 }
 
 #' @rdname footprint_
-footprint_Width <- function(altitude, fov = 94, aspectRatio = c(4, 3), ...) {
+footprint_width <- function(altitude, fov = 94, aspectRatio = c(4, 3), ...) {
   imageWidth <- aspectRatio[1]
   imageHeight <- aspectRatio[2]
 

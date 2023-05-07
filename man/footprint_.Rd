@@ -2,16 +2,16 @@
 % Please edit documentation in R/drone_footprint_calculations.R
 \name{footprint_}
 \alias{footprint_}
-\alias{footprint_Diagonal}
-\alias{footprint_Height}
-\alias{footprint_Width}
+\alias{footprint_diagonal}
+\alias{footprint_height}
+\alias{footprint_width}
 \title{Drone Footprint Calculations}
 \usage{
-footprint_Diagonal(altitude, fov = 94, aspectRatio = c(4, 3), ...)
+footprint_diagonal(altitude, fov = 94, aspectRatio = c(4, 3), ...)
 
-footprint_Height(altitude, fov = 94, aspectRatio = c(4, 3), ...)
+footprint_height(altitude, fov = 94, aspectRatio = c(4, 3), ...)
 
-footprint_Width(altitude, fov = 94, aspectRatio = c(4, 3), ...)
+footprint_width(altitude, fov = 94, aspectRatio = c(4, 3), ...)
 }
 \arguments{
 \item{altitude}{numeric, required. Altitude of the drone in meters.}
@@ -29,17 +29,15 @@ A single numeric value representing the calculated aspect of the camera footprin
 Calculates various aspects of a drone's camera footprint at a given altitude, field of view, and image aspect ratio.
 }
 \examples{
-\dontrun{
 # Calculate the width of the camera footprint at an altitude of 100 meters
-footprint_Width(altitude = 100)
+footprint_width(altitude = 100)
 
 # Calculate the height of the camera footprint at an altitude of 50 meters
 # and a field of view of 120 degrees
-footprint_Height(altitude = 50, fov = 120)
+footprint_height(altitude = 50, fov = 120)
 
 # Calculate the diagonal length of the camera footprint at an altitude of
 # 200 meters, a field of view of 90 degrees, and an image aspect ratio of
 # 4:3
-footprint_Diagonal(altitude = 200, fov = 90, aspectRatio = c(4, 3))
-}
+footprint_diagonal(altitude = 200, fov = 90, aspectRatio = c(4, 3))
 }

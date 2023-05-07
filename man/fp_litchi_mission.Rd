@@ -2,7 +2,7 @@
 % Please edit documentation in R/drone_createLitchiMissionGrid.R
 \name{fp_litchi_mission}
 \alias{fp_litchi_mission}
-\title{Generate a mission plan for a drone in Litchi app}
+\title{Generate a mission plan for a drone in 'Litchi' app}
 \usage{
 fp_litchi_mission(photo_grid, origin_lat, origin_long, angleDeg = 0, ...)
 }
@@ -21,7 +21,7 @@ fp_litchi_mission(photo_grid, origin_lat, origin_long, angleDeg = 0, ...)
 A data frame containing the mission plan for the drone, in a format suitable for use with the Litchi app.
 }
 \description{
-Generate a mission plan for a drone in Litchi app
+Generate a mission plan for a drone in 'Litchi' app
 }
 \examples{
 photo_grid <- fp_photo_grid(
@@ -33,7 +33,7 @@ litchiMission <- fp_litchi_mission(photo_grid, pg,
   origin_lat = 55.125505,
   origin_long = 10.268467, angle = 38
 )
-\dontrun{
+\donttest{
 write.csv(
   x = litchiMission, file = "missionFiles/testGrid10.csv",
   row.names = FALSE

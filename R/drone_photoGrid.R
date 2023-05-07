@@ -56,13 +56,13 @@ fp_photo_grid <- function(altitude = 40,
   }
 
   # Calculate the width of the footprint of each photo
-  photo_footprint_width <- footprint_Width(altitude, fov = fov, aspectRatio = aspectRatio)
+  photo_footprint_width <- footprint_width(altitude, fov = fov, aspectRatio = aspectRatio)
 
   # Calculate the distance between photos in the width-wise direction
   distanceBetweenPhotos_widthways <- photo_footprint_width - photo_footprint_width * overlap_width
 
   # Calculate the height of the footprint of each photo
-  photo_footprint_height <- footprint_Height(altitude, fov = fov, aspectRatio = aspectRatio)
+  photo_footprint_height <- footprint_height(altitude, fov = fov, aspectRatio = aspectRatio)
 
   # Calculate the distance between photos in the height-wise direction
   distanceBetweenPhotos_heightways <- photo_footprint_height - photo_footprint_height * overlap_height

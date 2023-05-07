@@ -1,12 +1,12 @@
 Package: flightplanner
-Title: Create Drone Flight Plans for Litchi
+Title: Create Drone Flight Plans for 'Litchi'
 Version: 0.1.0
 Authors@R: 
     person("Owen", "Jones", , "jones@biology.sdu.dk", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-5720-4686"))
-Description: Allows users to create flight plans for the Litchi software
+Description: Allows users to create flight plans for the 'Litchi' software
     using input data such as latitude and longitude of an origin point,
-    dimensions and orientation of a survey array, done camera field of
+    dimensions and orientation of a survey array, drone camera field of
     view and desired altitude. It calculates the image footprint using
     this information and calculates the best position of photo survey
     points. It also provides the ability to visualize the resulting flight

@@ -42,7 +42,7 @@ transformSf <- function(data) {
   st_transform(data, 3857)
 }
 
-#' Generate a mission plan for a drone in Litchi app
+#' Generate a mission plan for a drone in 'Litchi' app
 #'
 #' @param photo_grid A photo grid data frame created using the `fp_photo_grid` function.
 #' @param origin_lat The latitude of the starting point for the mission (in degrees).
@@ -70,7 +70,7 @@ transformSf <- function(data) {
 #'   origin_lat = 55.125505,
 #'   origin_long = 10.268467, angle = 38
 #' )
-#' \dontrun{
+#' \donttest{
 #' write.csv(
 #'   x = litchiMission, file = "missionFiles/testGrid10.csv",
 #'   row.names = FALSE

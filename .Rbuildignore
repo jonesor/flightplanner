@@ -10,3 +10,4 @@ README_files
 ^pkgdown$
 ^README\.Rmd$
 ^cran-comments\.md$
+^CRAN-SUBMISSION$
