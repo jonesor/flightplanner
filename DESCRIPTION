@@ -4,6 +4,8 @@ Version: 0.1.0
 Authors@R: 
     person("Owen", "Jones", , "jones@biology.sdu.dk", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-5720-4686"))
+Author: Owen Jones [aut, cre]
+Maintainer: Owen Jones <jones@biology.sdu.dk>
 Description: Allows users to create flight plans for the 'Litchi' software
     using input data such as latitude and longitude of an origin point,
     dimensions and orientation of a survey array, drone camera field of
