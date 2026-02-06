@@ -66,9 +66,9 @@ transformSf <- function(data) {
 #'   overlap_height = 0.2, survey_xaxis = 100, survey_yaxis = 200, plot = FALSE
 #' )
 #'
-#' litchiMission <- fp_litchi_mission(photo_grid, pg,
+#' litchiMission <- fp_litchi_mission(photo_grid,
 #'   origin_lat = 55.125505,
-#'   origin_long = 10.268467, angle = 38
+#'   origin_long = 10.268467, angleDeg = 38
 #' )
 #' \donttest{
 #' write.csv(
@@ -84,11 +84,15 @@ fp_litchi_mission <- function(photo_grid, origin_lat, origin_long, angleDeg = 0,
   if (!inherits(photo_grid, "data.frame")) {
     stop("photo_grid must be a data frame")
   }
-  if (!is.numeric(photo_grid$horiz) || !is.numeric(photo_grid$vert)) {
-    stop("photoID, horiz, and vert must be numeric columns in photo_grid")
+  if (!is.numeric(photo_grid$horiz) || !is.numeric(photo_grid$vert) ||
+      anyNA(photo_grid$horiz) || anyNA(photo_grid$vert)) {
+    stop("horiz and vert must be numeric columns in photo_grid with no missing values")
   }
-  if (length(unique(photo_grid$photoID)) != nrow(photo_grid)) {
-    stop("photoID must be a unique identifier for each row in photo_grid")
+  if (!("altitude" %in% names(photo_grid)) || !is.numeric(photo_grid$altitude) || anyNA(photo_grid$altitude)) {
+    stop("altitude must be a numeric column in photo_grid with no missing values")
+  }
+  if (length(unique(photo_grid$photoID)) != nrow(photo_grid) || anyNA(photo_grid$photoID)) {
+    stop("photoID must be a unique identifier for each row in photo_grid with no missing values")
   }
   if (min(photo_grid$altitude) <= 0) {
     stop("altitude must contain a positive value in photo_grid")
@@ -153,7 +157,7 @@ fp_litchi_mission <- function(photo_grid, origin_lat, origin_long, angleDeg = 0,
     actiontype1 = 0, actionparam1 = 1500,
     actiontype2 = 1, actionparam2 = 0,
     altitudemode = 0
-  ) |> mutate(rowNumber = as.numeric(as.factor(lat)))
+  ) |> mutate(rowNumber = as.numeric(as.factor(round(lat, 8))))
 
   # Some rearranging, necessary to ensure an efficient "lawnmower" flight path.
   litchiMission_oddRowID <- seq(1, max(litchiMission$rowNumber), 2)

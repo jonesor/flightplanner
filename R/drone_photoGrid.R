@@ -37,22 +37,30 @@ fp_photo_grid <- function(altitude = 40,
 
   # Validate inputs
   # Check that altitude is a positive number
-  if (altitude <= 0) {
+  if (!is.numeric(altitude) || length(altitude) != 1 || is.na(altitude) || altitude <= 0) {
     stop("Altitude must be a positive number")
   }
 
-  # Check that overlap width and overlap height are between 0 and 1
-  if (overlap_width < 0 || overlap_width > 1) {
-    stop("Overlap width must be between 0 and 1")
+  # Check that overlap width and overlap height are between 0 and 1 (non-inclusive of 1)
+  if (!is.numeric(overlap_width) || length(overlap_width) != 1 || is.na(overlap_width) ||
+      overlap_width < 0 || overlap_width >= 1) {
+    stop("Overlap width must be between 0 and 1 (exclusive of 1)")
   }
 
-  if (overlap_height < 0 || overlap_height > 1) {
-    stop("Overlap height must be between 0 and 1")
+  if (!is.numeric(overlap_height) || length(overlap_height) != 1 || is.na(overlap_height) ||
+      overlap_height < 0 || overlap_height >= 1) {
+    stop("Overlap height must be between 0 and 1 (exclusive of 1)")
   }
 
   # Check that plot is a boolean value
-  if (!is.logical(plot)) {
+  if (!is.logical(plot) || length(plot) != 1 || is.na(plot)) {
     stop("Plot must be a boolean value (TRUE or FALSE)")
+  }
+
+  # Check that survey dimensions are positive numbers
+  if (!is.numeric(survey_xaxis) || length(survey_xaxis) != 1 || is.na(survey_xaxis) || survey_xaxis <= 0 ||
+      !is.numeric(survey_yaxis) || length(survey_yaxis) != 1 || is.na(survey_yaxis) || survey_yaxis <= 0) {
+    stop("survey_xaxis and survey_yaxis must be positive numbers")
   }
 
   # Calculate the width of the footprint of each photo
@@ -79,7 +87,7 @@ fp_photo_grid <- function(altitude = 40,
   photo_grid <- expand_grid(horiz, vert) |>
     mutate(xmin = horiz - (photo_footprint_width / 2), xmax = horiz + (photo_footprint_width / 2)) |>
     mutate(ymin = vert - (photo_footprint_height / 2), ymax = vert + (photo_footprint_height / 2)) |>
-    mutate(photoID = as.factor(1:dplyr::n())) |>
+    mutate(photoID = seq_len(dplyr::n())) |>
     mutate(altitude = altitude)
 
 
