@@ -49,6 +49,7 @@ footprint_diagonal <- function(altitude, fov = 94, aspectRatio = c(4, 3), ...) {
 }
 
 #' @rdname footprint_
+#' @export
 footprint_height <- function(altitude, fov = 94, aspectRatio = c(4, 3), ...) {
   imageWidth <- aspectRatio[1]
   imageHeight <- aspectRatio[2]
@@ -75,6 +76,7 @@ footprint_height <- function(altitude, fov = 94, aspectRatio = c(4, 3), ...) {
 }
 
 #' @rdname footprint_
+#' @export
 footprint_width <- function(altitude, fov = 94, aspectRatio = c(4, 3), ...) {
   imageWidth <- aspectRatio[1]
   imageHeight <- aspectRatio[2]

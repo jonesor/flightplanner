@@ -3,6 +3,8 @@
 export(computeRotationMatrix)
 export(convertToSf)
 export(footprint_diagonal)
+export(footprint_height)
+export(footprint_width)
 export(fp_litchi_mission)
 export(fp_photo_grid)
 export(transformSf)
